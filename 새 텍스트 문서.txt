@@ -1,0 +1,31 @@
+euckr collate euckr_korean_ci;
+
+create table course (
+cno char(10) NOT NULL,
+cname char(20) NOT NULL,
+credit int(1) NOT NULL,
+dept char(20) NOT NULL,
+prname char(20) NOT NULL,
+primary key(cno)
+) engine=InnoDB
+default character set
+euckr collate euckr_korean_ci;
+
+CREATE TABLE ENROL ( 
+Sno int(8) NOT NULL, 
+Cno char(10) NOT NULL, 
+Grade char(1), 
+midterm int(3), 
+final int(3),
+PRIMARY KEY(Sno,Cno), 
+FOREIGN KEY(Sno) REFERENCES STUDENT(sno) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE, 
+FOREIGN KEY(Cno) REFERENCES COURSE(cno) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE, 
+CHECK(midterm >= 0 AND midterm <= 100),
+CHECK(final >= 0 AND midterm <= 100)
+)engine=InnoDB
+default character set
+euckr collate euckr_korean_ci;
